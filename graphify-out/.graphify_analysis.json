@@ -1,0 +1,140 @@
+{
+  "communities": {
+    "0": [
+      "package",
+      "package_bin",
+      "package_bin_mini_merch_core",
+      "package_description",
+      "package_devdependencies",
+      "package_devdependencies_yao_pkg_pkg",
+      "package_license",
+      "package_main",
+      "package_name",
+      "package_version",
+      "yao_pkg_pkg"
+    ],
+    "1": [
+      "src_builder",
+      "src_builder_build",
+      "src_builder_default_shipping",
+      "src_builder_fs",
+      "src_builder_path",
+      "src_builder_shopjson",
+      "src_builder_slug",
+      "src_builder_tokens",
+      "src_index",
+      "src_index_fs",
+      "src_index_path"
+    ],
+    "2": [
+      "src_studio",
+      "src_studio_builder",
+      "src_studio_exec",
+      "src_studio_fs",
+      "src_studio_http",
+      "src_studio_os",
+      "src_studio_path",
+      "src_studio_server",
+      "src_studio_web_dir"
+    ],
+    "3": [
+      "web_app",
+      "web_app_cardinput",
+      "web_app_el",
+      "web_app_parsecard",
+      "web_app_products",
+      "web_app_renderproducts",
+      "web_app_rendershipping",
+      "web_app_resizeimage",
+      "web_app_shipping"
+    ],
+    "4": [
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_build_mac",
+      "package_scripts_build_win",
+      "package_scripts_studio"
+    ],
+    "5": [
+      "src_studio_handlebuild",
+      "src_studio_jsonresponse",
+      "src_studio_readbody"
+    ],
+    "6": [
+      "src_studio_handledownload",
+      "src_studio_mime",
+      "src_studio_servefile"
+    ],
+    "7": [
+      "release_minimall_studio_app_contents_macos_launcher",
+      "release_minimall_studio_app_contents_macos_launcher__entry"
+    ]
+  },
+  "cohesion": {
+    "0": 0.18181818181818182,
+    "1": 0.23636363636363636,
+    "2": 0.2222222222222222,
+    "3": 0.3055555555555556,
+    "4": 0.4,
+    "5": 0.6666666666666666,
+    "6": 0.6666666666666666,
+    "7": 1.0
+  },
+  "gods": [
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 5
+    },
+    {
+      "id": "src_builder_slug",
+      "label": "slug()",
+      "degree": 3
+    },
+    {
+      "id": "src_builder_shopjson",
+      "label": "shopJson()",
+      "degree": 3
+    },
+    {
+      "id": "src_builder_build",
+      "label": "build()",
+      "degree": 3
+    },
+    {
+      "id": "src_studio_mime",
+      "label": "mime()",
+      "degree": 3
+    },
+    {
+      "id": "src_studio_handlebuild",
+      "label": "handleBuild()",
+      "degree": 3
+    },
+    {
+      "id": "web_app_el",
+      "label": "el()",
+      "degree": 3
+    },
+    {
+      "id": "web_app_renderproducts",
+      "label": "renderProducts()",
+      "degree": 3
+    },
+    {
+      "id": "package_bin",
+      "label": "bin",
+      "degree": 2
+    },
+    {
+      "id": "package_devdependencies_yao_pkg_pkg",
+      "label": "@yao-pkg/pkg",
+      "degree": 2
+    }
+  ],
+  "surprises": [],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

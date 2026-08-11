@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>miniMall-core studio</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>mini<span>Mall</span>-core</h1>
+      <p class="sub">Build your native Minima-Core <b>Shop</b> + <b>Inbox</b> APKs — no Maxima, no MiniDapp.</p>
+    </header>
+
+    <section class="card">
+      <h2>1 · Shop</h2>
+      <label>Shop name</label>
+      <input id="shopName" type="text" placeholder="Bean &amp; Brew" />
+      <label>Currency</label>
+      <div class="seg" id="currency">
+        <button class="on" data-cur="Minima">Minima</button>
+        <button data-cur="USDT">mxUSDT</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2 · Vendor Card</h2>
+      <p class="hint">Open the <b>miniMall Inbox</b> app on your node → <b>≡ → Vendor Card → Copy</b>, then paste it here. It's your public shop key + receiving address.</p>
+      <input id="vendorCard" type="text" placeholder="0x…|Mx…" />
+      <div id="cardStatus" class="cardstatus"></div>
+    </section>
+
+    <section class="card">
+      <h2>3 · Shipping</h2>
+      <p class="hint">Three delivery options customers choose at checkout — set each label and a fee in your shop currency (0 = free).</p>
+      <div id="shipping"></div>
+    </section>
+
+    <section class="card">
+      <h2>4 · Products <span class="muted" id="prodCount"></span></h2>
+      <div id="products"></div>
+      <button class="ghost" id="addProduct">+ Add product</button>
+    </section>
+
+    <section class="card">
+      <button class="build" id="build">Build shop bundle (.shop)</button>
+      <div id="status" class="status"></div>
+      <div id="downloads" class="downloads"></div>
+    </section>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+node_modules/
+package-lock.json
+
+# Build outputs — the desktop apps and generated APKs are published as release
+# artifacts in the minima-core-apks catalog, not carried in the source tree.
+dist/
+release/
+*.apk
+*.dmg
+*.exe
+*.zip
+
+# Real shop identity (vendor public id + payout address). Copy sample-config.json
+# and fill in your own Vendor Card instead.
+live-config.json
+shop2.json
+
+.DS_Store

@@ -1,0 +1,12 @@
+{
+  "shopName": "Bean & Brew",
+  "currency": "Minima",
+  "vendorPublicId": "0xabababababababababababababababababababababababababababababababababcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+  "vendorAddress": "MxSAMPLE_PASTE_YOUR_OWN_VENDOR_CARD_ADDRESS_HERE",
+  "currencyNote": "tokenid auto-filled from currency",
+  "products": [
+    { "name": "House Blend (250g)", "description": "Smooth everyday espresso roast.", "mode": "units", "price": "5", "maxUnits": 10 },
+    { "name": "Single Origin Ethiopia", "description": "Bright, floral, washed Yirgacheffe.", "mode": "units", "price": "8", "maxUnits": 4 },
+    { "name": "Cold Brew Pack", "description": "Ready-to-steep, makes 2L.", "mode": "units", "price": "12", "maxUnits": 6 }
+  ]
+}
