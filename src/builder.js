@@ -16,11 +16,24 @@ const TOKENS = {
   USDT:   '0x7D39745FBD29049BE29850B55A18BF550E4D442F930F86266E34193D89042A90',
 };
 
+/** The token a shop is paid in, from its CURRENCY alone: "Minima" pays 0x00, "USDT" or "mxUSDT" (the wire values for
+ *  MxUSD) pay MxUSD, any case; anything else null. The miniMall Shop app (0.4.13+) refuses a .shop whose tokenid is
+ *  not its currency's token, so the builder never writes one. */
+function tokenFor(currency) {
+  const c = String(currency);
+  if (/^minima$/i.test(c)) return TOKENS.Minima;
+  if (/^(usdt|mxusdt)$/i.test(c)) return TOKENS.USDT;
+  return null;
+}
+
 function slug(s) { return String(s || 'shop').replace(/[^a-z0-9]+/gi, '-').replace(/^-+|-+$/g, '') || 'shop'; }
 
 function shopJson(cfg) {
   const currency = cfg.currency || 'Minima';
-  const tokenid = cfg.tokenid || TOKENS[currency] || '0x00';
+  const tokenid = tokenFor(currency);
+  if (!tokenid) throw new Error(`Currency "${currency}" cannot be paid: use Minima or USDT (MxUSD).`);
+  if (cfg.tokenid && String(cfg.tokenid).toLowerCase() !== tokenid.toLowerCase())
+    throw new Error(`The config says currency ${currency} but tokenid ${cfg.tokenid}. A .shop is paid in the token its currency names (${tokenid}); remove tokenid or correct it.`);
   const products = (cfg.products || []).map((p, i) => ({
     id: p.id || ('p' + i),
     name: p.name || ('Item ' + (i + 1)),
@@ -47,11 +60,12 @@ async function build(cfg, outDir, opts = {}) {
   if (!cfg.products || !cfg.products.length) throw new Error('Add at least one product');
   if (cfg.products.length > 40) throw new Error('Maximum 40 products per shop');
   if (!cfg.vendorPublicId || !cfg.vendorAddress) throw new Error('Vendor card (publicId + address) required');
+  const json = shopJson(cfg);   // refuses a currency/tokenid that disagree, before anything is written
   fs.mkdirSync(outDir, { recursive: true });
   const file = path.join(outDir, `${slug(cfg.shopName)}.shop`);
-  fs.writeFileSync(file, shopJson(cfg));
+  fs.writeFileSync(file, json);
   log(`→ ${file}`);
   return { bundle: file };
 }
 
-module.exports = { build, shopJson, slug, TOKENS, DEFAULT_SHIPPING };
+module.exports = { build, shopJson, slug, tokenFor, TOKENS, DEFAULT_SHIPPING };

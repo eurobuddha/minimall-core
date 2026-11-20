@@ -1,6 +1,6 @@
 {
   "name": "@eurobuddha/mini-merch-core",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Build native Minima-Core shop + inbox APKs (Maxima-free, seed-derived sealed-box comms). Fork of miniMerch retargeted from MiniDapps to native Android APKs.",
   "main": "src/index.js",
   "bin": {
@@ -10,7 +10,8 @@
     "studio": "node src/studio.js",
     "build": "node src/index.js build",
     "build:mac": "bash build/build-mac.sh",
-    "build:win": "bash build/build-win.sh"
+    "build:win": "bash build/build-win.sh",
+    "test": "node test/builder-test.js"
   },
   "license": "MIT",
   "devDependencies": {

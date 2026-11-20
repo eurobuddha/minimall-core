@@ -8,7 +8,7 @@ Two outputs per shop:
 - **Inbox APK** — the vendor installs it; receives + manages orders (PAID → CONFIRMED → SHIPPED → DELIVERED).
 
 No Maxima, no MDS. Orders ride a shared `MINIMERCH` coin-state address (privacy by encryption); payment is a
-separate value send to the vendor address, ref-stamped for matching. Currencies: **Minima** + **mxUSDT**.
+separate value send to the vendor address, ref-stamped for matching. Currencies: **Minima** + **MxUSD** (wire value `USDT`).
 
 ## Requirements (builder machine)
 - Node 18+
@@ -30,7 +30,9 @@ separate value send to the vendor address, ref-stamped for matching. Currencies:
 node src/index.js build <config.json> [outDir]
 ```
 `config.json`: `{ shopName, currency, vendorPublicId, vendorAddress, products:[{name,description,price,maxUnits}] }`
-(see `sample-config.json`). `tokenid` is auto-filled from `currency`.
+(see `sample-config.json`). `tokenid` is filled from `currency` (Minima → `0x00`, `USDT` → MxUSD
+`0x7D39745FBD29049BE29850B55A18BF550E4D442F930F86266E34193D89042A90`); a config whose `tokenid` names another
+token, or whose currency is neither, is refused (the Shop app refuses such a `.shop` too).
 
 ## How it differs from miniMall
 | | miniMall | miniMall-core |

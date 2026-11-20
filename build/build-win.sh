@@ -9,7 +9,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-VERSION="0.1.1"
+VERSION="0.1.2"
 OUT_DIR="$PROJECT_DIR/release"
 
 command -v makensis >/dev/null 2>&1 || { echo "❌  makensis not found. Install with: brew install nsis"; exit 1; }
