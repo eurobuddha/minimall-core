@@ -8,7 +8,7 @@
 Unicode True
 
 !define APP_NAME       "miniMall Studio"
-!define APP_VERSION    "0.1.2"
+!define APP_VERSION    "0.1.3"
 !define APP_PUBLISHER  "miniMall"
 !define APP_URL        "https://github.com/eurobuddha/minima-core-apks"
 !define EXE_NAME       "miniMallStudio.exe"
@@ -26,7 +26,7 @@ ShowInstDetails        show
 Icon          "icon.ico"
 UninstallIcon "icon.ico"
 
-VIProductVersion       "0.1.2.0"
+VIProductVersion       "0.1.3.0"
 VIAddVersionKey "ProductName"      "${APP_NAME}"
 VIAddVersionKey "ProductVersion"   "${APP_VERSION}"
 VIAddVersionKey "CompanyName"      "${APP_PUBLISHER}"

@@ -20,4 +20,8 @@ assert.strictEqual(tok({ currency: 'USDT', tokenid: MXUSD.toLowerCase() }), MXUS
 assert.throws(() => tok({ currency: 'Minima', tokenid: MXUSD }), /tokenid/);   // was written as given
 assert.throws(() => tok({ currency: 'USDT', tokenid: '0x00' }), /tokenid/);
 assert.throws(() => tok({ currency: 'BTC' }), /cannot be paid/);            // was written as 0x00
+assert.strictEqual(JSON.parse(shopJson(Object.assign({}, base, { products: [{ name: 'Half', price: '.5' }] }))).products[0].price, '.5');
+assert.throws(() => tok({ products: [{ name: 'Big', price: '1e3' }] }), /plain number/);
+assert.throws(() => tok({ products: [{ name: 'Neg', price: '-1' }] }), /plain number/);
+assert.throws(() => tok({ shipping: [{ id: 'uk', label: 'UK', fee: '+2' }] }), /plain number/);
 console.log('builder-test: ok');

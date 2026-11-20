@@ -26,6 +26,9 @@ function tokenFor(currency) {
   return null;
 }
 
+/** A price or fee as the Shop app (0.4.17+) accepts it: digits with at most one point, no sign, exponent or spaces. */
+const PLAIN = /^(\d{1,30}(\.\d{0,44})?|\.\d{1,44})$/;
+
 function slug(s) { return String(s || 'shop').replace(/[^a-z0-9]+/gi, '-').replace(/^-+|-+$/g, '') || 'shop'; }
 
 function shopJson(cfg) {
@@ -34,6 +37,15 @@ function shopJson(cfg) {
   if (!tokenid) throw new Error(`Currency "${currency}" cannot be paid: use Minima or USDT (MxUSD).`);
   if (cfg.tokenid && String(cfg.tokenid).toLowerCase() !== tokenid.toLowerCase())
     throw new Error(`The config says currency ${currency} but tokenid ${cfg.tokenid}. A .shop is paid in the token its currency names (${tokenid}); remove tokenid or correct it.`);
+  for (const p of cfg.products || []) {
+    const price = String(p.price != null ? p.price : '0');
+    if (!PLAIN.test(price)) throw new Error(`The price of "${p.name || ''}" is not a plain number (${price}).`);
+  }
+  const shipping = cfg.shipping && cfg.shipping.length ? cfg.shipping : DEFAULT_SHIPPING;
+  for (const s of shipping) {
+    const fee = String(s.fee == null || s.fee === '' ? '0' : s.fee);
+    if (!PLAIN.test(fee)) throw new Error(`The fee of the delivery method "${s.label || s.id || ''}" is not a plain number (${fee}).`);
+  }
   const products = (cfg.products || []).map((p, i) => ({
     id: p.id || ('p' + i),
     name: p.name || ('Item ' + (i + 1)),
@@ -49,7 +61,7 @@ function shopJson(cfg) {
     vendorPublicId: cfg.vendorPublicId || '',
     vendorAddress: cfg.vendorAddress || '',
     currency, tokenid,
-    shipping: cfg.shipping && cfg.shipping.length ? cfg.shipping : DEFAULT_SHIPPING,
+    shipping,
     products,
   }, null, 2);
 }

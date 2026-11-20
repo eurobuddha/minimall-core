@@ -1,6 +1,6 @@
 {
   "name": "@eurobuddha/mini-merch-core",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Build native Minima-Core shop + inbox APKs (Maxima-free, seed-derived sealed-box comms). Fork of miniMerch retargeted from MiniDapps to native Android APKs.",
   "main": "src/index.js",
   "bin": {

@@ -9,7 +9,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 APP_NAME="miniMall Studio"
 BINARY_NAME="minimerch-studio"
-VERSION="0.1.2"
+VERSION="0.1.3"
 OUT_DIR="$PROJECT_DIR/release"
 APP_DIR="$OUT_DIR/$APP_NAME.app"
 
